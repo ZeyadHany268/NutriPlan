@@ -1,0 +1,377 @@
+
+#meal-details,
+#products-section,
+#foodlog-section {
+  display: none;
+}
+
+#sidebar-close-btn {
+  display: none;
+}
+
+.recipe-list-mode {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.recipe-list-mode .recipe-card {
+  display: flex;
+  min-height: 170px;
+}
+
+.recipe-list-mode .recipe-card > div:first-child {
+  width: 180px;
+  height: auto;
+  min-height: 170px;
+  flex-shrink: 0;
+}
+
+.recipe-list-mode .recipe-card > div:last-child {
+  flex: 1;
+}
+
+.product-card img,
+.recipe-card img {
+  background: #f8fafc;
+}
+
+.nutrition-row + .nutrition-row {
+  margin-top: 1rem;
+}
+
+.toast-notification {
+  animation: toast-in 0.2s ease-out;
+}
+
+@keyframes toast-in {
+  from { transform: translateY(12px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 1023px) {
+  #sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    z-index: 60;
+  }
+
+  #sidebar.open {
+    transform: translateX(0);
+  }
+
+  #main-content {
+    margin-left: 0;
+  }
+
+  #sidebar-close-btn {
+    display: inline-flex;
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+  }
+
+  #sidebar-overlay {
+    display: none;
+  }
+
+  #sidebar-overlay.active {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(15, 23, 42, 0.45);
+  }
+}
+
+@media (max-width: 767px) {
+  #header > div {
+    padding: 1rem 1.125rem;
+  }
+
+  #header h1 {
+    font-size: 1.75rem;
+  }
+
+  #header p {
+    display: none;
+  }
+
+  #search-filters-section,
+  #meal-categories-section,
+  #all-recipes-section,
+  #meal-details,
+  #products-section,
+  #foodlog-section {
+    padding-left: 1.125rem;
+    padding-right: 1.125rem;
+  }
+
+  #search-filters-section .flex.items-center.gap-3 {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  #meal-categories-section .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  #meal-categories-section .category-card {
+    min-height: 84px;
+    padding: 1rem;
+  }
+
+  #meal-categories-section .category-card h3 {
+    font-size: 1rem;
+  }
+
+  #recipes-grid,
+  .recipe-list-mode {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .recipe-list-mode .recipe-card {
+    display: block;
+  }
+
+  .recipe-list-mode .recipe-card > div:first-child {
+    width: 100%;
+    height: 12rem;
+  }
+
+  #products-section .bg-gradient-to-r {
+    padding: 1.25rem;
+  }
+
+  #products-section .bg-gradient-to-r > .flex {
+    gap: 0.75rem;
+  }
+
+  #products-section .bg-gradient-to-r > .flex > button {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  #foodlog-section .bg-gradient-to-r .flex.items-center.justify-between {
+    align-items: flex-start;
+  }
+
+  #foodlog-section .bg-gradient-to-r .text-right {
+    max-width: 130px;
+  }
+
+  #weekly-chart {
+    grid-template-columns: repeat(7, minmax(56px, 1fr));
+    overflow-x: auto;
+  }
+
+  #meal-details .relative.h-80 {
+    height: 29rem;
+  }
+
+  #meal-details .absolute.bottom-0 {
+    padding: 1.5rem;
+  }
+
+  #meal-details .absolute.bottom-0 h1 {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  #meal-details .absolute.bottom-0 .flex.items-center.gap-6 {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  #log-meal-modal > div,
+  #product-detail-modal > div {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+/* Food Log reference layout */
+.foodlog-hero {
+  min-height: 82px;
+}
+
+.foodlog-metric-card {
+  min-height: 116px;
+}
+
+.logged-food-item {
+  min-height: 82px;
+}
+
+.logged-food-item .logged-macros span {
+  white-space: nowrap;
+}
+
+.foodlog-week-day {
+  min-height: 118px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.foodlog-week-day-today {
+  color: #047857;
+}
+
+.foodlog-summary-card {
+  min-height: 80px;
+}
+
+/* SweetAlert success state shown after logging a meal */
+.nutriplan-swal-popup {
+  width: min(380px, calc(100vw - 32px)) !important;
+  border-radius: 4px !important;
+  padding: 28px 28px 34px !important;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18) !important;
+}
+
+.nutriplan-swal-icon {
+  width: 62px !important;
+  height: 62px !important;
+  margin: 0 auto 18px !important;
+  border-width: 2px !important;
+  color: #9bd48c !important;
+  border-color: #dcefd6 !important;
+}
+
+.nutriplan-swal-title {
+  color: #575757 !important;
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  margin: 0 0 14px !important;
+}
+
+.nutriplan-swal-html {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.nutriplan-swal-description {
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.nutriplan-swal-calories {
+  color: #059669;
+  font-size: 17px;
+  font-weight: 700;
+  margin: 8px 0 0;
+}
+
+@media (max-width: 767px) {
+  .foodlog-hero {
+    padding: 1.125rem;
+  }
+
+  .foodlog-hero h2 {
+    font-size: 1.25rem;
+  }
+
+  .foodlog-hero .text-right p:last-child {
+    font-size: 0.95rem;
+  }
+
+  #foodlog-today-section,
+  #foodlog-section > div > .bg-white {
+    padding: 1rem;
+  }
+
+  .logged-food-item {
+    gap: 0.625rem;
+  }
+
+  .logged-food-item .min-w-\[72px\] {
+    min-width: 54px;
+  }
+
+  .logged-food-item .text-lg {
+    font-size: 1rem;
+  }
+
+  .foodlog-week-day {
+    min-width: 55px;
+    min-height: 104px;
+  }
+}
+
+.nutriplan-swal-fallback {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.42);
+}
+
+.nutriplan-swal-fallback-popup {
+  width: min(380px, calc(100vw - 32px));
+  padding: 30px 28px 34px;
+  border-radius: 4px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 20px 55px rgba(15, 23, 42, 0.24);
+  animation: nutriplan-alert-in 0.18s ease-out;
+}
+
+.nutriplan-swal-fallback-icon {
+  width: 62px;
+  height: 62px;
+  margin: 0 auto 18px;
+  border: 2px solid #dcefd6;
+  border-radius: 50%;
+  color: #9bd48c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.nutriplan-swal-fallback-popup h2 {
+  margin: 0 0 14px;
+  color: #575757;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.nutriplan-swal-fallback-popup p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.nutriplan-swal-fallback-popup strong {
+  display: block;
+  margin-top: 8px;
+  color: #059669;
+  font-size: 17px;
+}
+
+@keyframes nutriplan-alert-in {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@media (min-width: 768px) {
+  #foodlog-section .logged-macros {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 767px) {
+  #foodlog-section .logged-macros {
+    display: none !important;
+  }
+}
